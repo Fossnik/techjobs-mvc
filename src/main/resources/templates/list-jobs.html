@@ -12,6 +12,18 @@
 
     <!-- TODO #3 - Use the same list display from search.html -->
 
+    <div th:fragment="table-frag">
+        <h2 th:if="${jobs} and ${jobs.size()}" th:text="${jobs.size()} + ' Results'"></h2>
+        <h2 th:if="${jobs} and ${jobs.size() == 0}" th:text="'No Results'"></h2>
+        <table th:each="job : ${jobs}">
+        <tr th:each="column : ${job}">
+            <p>
+                <th th:text="${column.key}"></th> <!-- key is the header -->
+                <td th:text="${column.value}"></td> <!-- value is the fungible aspect -->
+            </p>
+        </tr>
+        </table>
+    </div>
 </div>
 
 </body>
